@@ -3,8 +3,14 @@
 const select = document.getElementById('select')
 const text = document.getElementById('text')
 
-const getData = fetch('./cars.json')
-    .then(res => res.json())
+const getData = fetch('./cdars.json')
+    .then(res => {
+        if (!res.ok) {
+            throw new Error('Ошибка при загрузке')
+        } else {
+            return res.json()
+        }
+    })
     .catch(err => console.log(err.message))
 
 
@@ -19,6 +25,7 @@ const addOptions = () => {
             select.append(newOption)
         });
     })
+        .catch(err => console.log(err.message))
 }
 
 const showCarInfo = (brand) => {
@@ -42,3 +49,4 @@ select.addEventListener('change', (e) => {
 })
 
 addOptions()
+
