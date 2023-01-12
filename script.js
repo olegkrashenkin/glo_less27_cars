@@ -3,7 +3,7 @@
 const select = document.getElementById('select')
 const text = document.getElementById('text')
 
-const getData = fetch('./cdars.json')
+const getData = fetch('./cars.json')
     .then(res => {
         if (!res.ok) {
             throw new Error('Ошибка при загрузке')
@@ -49,4 +49,3 @@ select.addEventListener('change', (e) => {
 })
 
 addOptions()
-
